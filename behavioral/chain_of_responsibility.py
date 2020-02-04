@@ -49,15 +49,17 @@ class OffensiveFilter:
 #
 
 
-class Handler(metaclass=abc.ABC):
+class Handler(metaclass=abc.ABCMeta):
     def __init__(self, next_handler_=None):
         self.next_handler = next_handler_
 
-    def handle(self):
-        pass
+    def handle(self, request):
+        is_processed = self.process(request)
+        if self.next_handler and is_processed:
+            self.next_handler.handle(request)
 
     @abc.abstractmethod
-    def process(request):
+    def process(self, request):
         pass
 
 
@@ -73,4 +75,5 @@ class EvenHandler(Handler):
 
     @staticmethod
     def process(request):
+        print(f'EvenHandler processing {request}')
         return request % 2 == 0
