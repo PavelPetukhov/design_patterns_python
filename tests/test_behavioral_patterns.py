@@ -1,4 +1,4 @@
-from design_patterns.behavioral import chain_of_responsibility
+from design_patterns.behavioral import chain_of_responsibility, command
 
 
 def test_chain_of_responsibility_example_1():
@@ -15,3 +15,9 @@ def test_chain_of_responsibility_example_2():
     numbers_to_check = [1, 3, 100, 20, -5, -2]
     for number in numbers_to_check:
         even_handler.handle(number)
+
+
+def test_command():
+    history = command.History()
+    history.execute(command.CapitalizeString('string1'))
+    history.undo()
