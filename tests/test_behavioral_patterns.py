@@ -1,4 +1,4 @@
-from design_patterns.behavioral import chain_of_responsibility, command
+from design_patterns.behavioral import chain_of_responsibility, command, interpreter
 
 
 def test_chain_of_responsibility_example_1():
@@ -21,3 +21,8 @@ def test_command():
     history = command.History()
     history.execute(command.CapitalizeString('string1'))
     history.undo()
+
+
+def test_interpeter():
+    interpreter_ = interpreter.NonterminalExpression(interpreter.TerminalExpression())
+    interpreter_.interpret()
