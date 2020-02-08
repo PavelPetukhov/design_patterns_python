@@ -4,6 +4,7 @@ from design_patterns.behavioral import (
     interpreter,
     strategy,
     iterator,
+    observer,
 )
 
 
@@ -42,7 +43,19 @@ def test_strategy_pattern():
     strategy_.business_logic(data=[3, 1, 3])
 
 
-def test_iterator_patter():
+def test_iterator_pattern():
     collection = iterator.CustomCollection(['First', 'Second'])
     print('\n'.join(collection))
+
+
+def test_observer_pattern():
+    first_observer = observer.FirstConcreteObserver()
+    second_observer = observer.SecondConcreteObserver()
+
+    concrete_subject = observer.ConcreteSubject()
+    concrete_subject.attach(first_observer)
+    concrete_subject.attach(second_observer)
+
+    concrete_subject.do_something_and_notify()
+
 
