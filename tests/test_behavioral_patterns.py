@@ -2,7 +2,8 @@ from design_patterns.behavioral import (
     chain_of_responsibility,
     command,
     interpreter,
-    strategy
+    strategy,
+    iterator,
 )
 
 
@@ -39,4 +40,9 @@ def test_strategy_pattern():
 
     strategy_.strategy = strategy.ParticularStrategy2()
     strategy_.business_logic(data=[3, 1, 3])
+
+
+def test_iterator_patter():
+    collection = iterator.CustomCollection(['First', 'Second'])
+    print('\n'.join(collection))
 
